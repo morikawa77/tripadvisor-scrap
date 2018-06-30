@@ -1,1 +1,1 @@
-# tripadvisor-scrap
+# Scrapping do site tripadvisor

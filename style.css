@@ -1,3 +1,18 @@
 .main {
     margin: 2rem;
 }
+
+.image {
+    flex: auto;
+    height: 200px;
+    min-width: 100px;
+    margin: 0 8px 8px 0; /* Some gutter */
+}
+
+.imagens {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: -8px; /* Adjustment for the gutter */
+    width: 100%;
+    margin-bottom: 50px;
+}

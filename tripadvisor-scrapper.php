@@ -1,13 +1,16 @@
 <?php
 
-header('Content-type: application/json; charset=utf-8');
+header('Content-type: application/json');
+header('Access-Control-Allow-Headers: Content-Type');
+header("Access-Control-Allow-Origin: *");
 
-if ( isset($_POST["url"]) ) {
 
-    $url = $_POST["url"];
+if (file_get_contents('php://input')){
+
+    $url  = file_get_contents('php://input');
     $status = '';
 
-    if( strstr($url, "Restaurant", true) ) {
+    if( strstr($url, "https://www.tripadvisor.com.br/Restaurant", false) ) {
         $ch = curl_init();
         $timeout = 5;
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -17,7 +20,11 @@ if ( isset($_POST["url"]) ) {
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         $html = curl_exec($ch);
         if (curl_errno($ch)) {
-            echo 'Curl error: ' . curl_error($ch);
+            $status = 'Curl error: ' . curl_error($ch);
+            $response = [ status => $status];
+            $json = json_encode($response, JSON_UNESCAPED_SLASHES);
+
+            echo $json;
         }
         curl_close($ch);
 
@@ -42,6 +49,7 @@ if ( isset($_POST["url"]) ) {
 
         $imagens = [];
 
+
         foreach ($spaner_imagens as $spaner_imagem) {
             $imagens[] = preg_replace('/\s+/', '', $spaner_imagem->getAttribute('data-src'));
         }
@@ -53,11 +61,16 @@ if ( isset($_POST["url"]) ) {
 
         echo $json;
     }else{
-        $status = "Critério da pesquisa inválido, verifique os dados e tente novamente";
+        $status = "URL da pesquisa inválida, verifique os dados e tente novamente";
         $response = [ status => $status];
         $json = json_encode($response, JSON_UNESCAPED_SLASHES);
 
         echo $json;
     }
+} else {
+    $status = "Erro: URL vazia";
+    $response = [ status => $status];
+    $json = json_encode($response, JSON_UNESCAPED_SLASHES);
+    echo $json;
 }
 ?>
