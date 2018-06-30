@@ -61,14 +61,14 @@ if (file_get_contents('php://input')){
 
         echo $json;
     }else{
-        $status = "URL da pesquisa inválida, verifique os dados e tente novamente";
+        $status = "URL da pesquisa inválida, verifique os dados e tente novamente.";
         $response = [ status => $status];
         $json = json_encode($response, JSON_UNESCAPED_SLASHES);
 
         echo $json;
     }
 } else {
-    $status = "Erro: URL vazia";
+    $status = "Erro: URL vazia.";
     $response = [ status => $status];
     $json = json_encode($response, JSON_UNESCAPED_SLASHES);
     echo $json;
