@@ -16,3 +16,10 @@
     width: 100%;
     margin-bottom: 50px;
 }
+
+.seta {
+    height: 14px;
+    font-size: 9px;
+    padding-top: 0;
+    margin-top: -5px;
+}

@@ -21,7 +21,8 @@
             <div class="form-group" id="form" v-if="seen">
                 <h2>Insira uma url de um restaurante do site Tripadvisor</h2>
                 <input type="text" class="form-control" id="url" name="url" v-model="url" aria-describedby="url" placeholder="Digite aqui a URL">
-                <small id="urlHelp" class="form-text text-muted">Ex: https://www.tripadvisor.com.br/Restaurant_Review-g303628-d4201091-Reviews-Mirai_Japanese_Food-Sao_Jose_Do_Rio_Preto_State_of_Sao_Paulo.html</small>
+                <small id="urlHelp" class="form-text text-muted">Ex: https://www.tripadvisor.com.br/Restaurant_Review-g303628-d4201091-Reviews-Mirai_Japanese_Food-Sao_Jose_Do_Rio_Preto_State_of_Sao_Paulo.html <button class="btn btn-primary btn-sm seta" @click="fillRestaurant">Preencher &uarr;</button></small>
+
                     <br />
             <button type="submit" class="btn btn-primary btn-block" @click="getRestaurant" v-on:click="seen = !seen">Enviar</button>
             </div>
@@ -104,6 +105,10 @@
                 this.imagens = "",
                 this.status = "",
                 this.url = ""
+            },
+            fillRestaurant()
+            {
+                this.url = "https://www.tripadvisor.com.br/Restaurant_Review-g303628-d4201091-Reviews-Mirai_Japanese_Food-Sao_Jose_Do_Rio_Preto_State_of_Sao_Paulo.html";
             }
         }
     });
