@@ -62,4 +62,17 @@ body {
     overflow-x: hidden;
 }
 
+#nprogress .bar {
+    background: #2cd64c;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px #2cd64c, 0 0 5px #2cd64c;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: #2cd64c;
+    border-left-color: #2cd64c;
+}
+
 [v-cloak] { display: none; }
